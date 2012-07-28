@@ -2,7 +2,7 @@
 
 // model.php
 
-$container['db.pdo'] = $container->share(function($c) {
+$app['db.pdo'] = $app->share(function($c) {
     $pdo = new PDO(
       sprintf('mysql:host=%s;dbname=%s', $c['db.host'], $c['db.database']),
      $c['db.user'],
@@ -11,7 +11,7 @@ $container['db.pdo'] = $container->share(function($c) {
     return $pdo;
 });
 
-$container['model.all_posts'] = function($c) {
+$app['model.all_posts'] = function($c) {
     $stmt = $c['db.pdo']->query('SELECT id, title FROM post');
     while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
         $posts[] = $row;
@@ -20,8 +20,8 @@ $container['model.all_posts'] = function($c) {
     return $posts;
 };
 
-$container['model.post_by_id'] = $container->protect(function($id) use ($container) {
-    $sth = $container['db.pdo']->prepare('SELECT id, date, title, body FROM post where id = :id');
+$app['model.post_by_id'] = $app->protect(function($id) use ($app) {
+    $sth = $app['db.pdo']->prepare('SELECT id, date, title, body FROM post where id = :id');
     $sth->execute(array(':id' => $id));
     $post = $sth->fetch(PDO::FETCH_ASSOC);
 
