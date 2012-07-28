@@ -1,31 +1,13 @@
 <?php
-use Symfony\Component\HttpFoundation\Response;
-
-function list_action($container)
+// controllers.php
+function list_action()
 {
-    $get_all_posts = $container['model.all_posts'];
-    $posts = $get_all_posts;
-    $html = render_template('templates/list.php', array('posts' => $posts));
-
-    return new Response($html);
+    $posts = get_all_posts();
+    require 'templates/list.php';
 }
 
-function show_action($id, $container)
+function show_action($id)
 {
-    $get_post_by_id = $container['model.post_by_id'];
-    $post = $get_post_by_id($id);
-    $html = render_template('templates/show.php', array('post' => $post));
-
-    return new Response($html);
-}
-
-// テンプレートをレンダリングするためのヘルパー関数
-function render_template($path, $params)
-{
-    extract($params, EXTR_SKIP);
-    ob_start();
-    require $path;
-    $html = ob_get_clean();
-
-    return $html;
+    $post = get_post_by_id($id);
+    require 'templates/show.php';
 }

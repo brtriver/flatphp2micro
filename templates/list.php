@@ -5,7 +5,7 @@
     <ul>
         <?php foreach ($posts as $post): ?>
         <li>
-            <a href="show?id=<?php echo htmlspecialchars($post['id'], ENT_QUOTES, 'utf-8') ?>">
+            <a href="index.php/show?id=<?php echo htmlspecialchars($post['id'], ENT_QUOTES, 'utf-8') ?>">
                 <?php echo htmlspecialchars($post['title'], ENT_QUOTES, 'utf-8') ?>
             </a>
         </li>

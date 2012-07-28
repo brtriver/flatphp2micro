@@ -1,24 +1,18 @@
 <?php
-// index.php
-
 // グローバルライブラリの読み込みと初期化
 require 'bootstrap.php';
 
-use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\HttpFoundation\Response;
+// ドキュメントルート以外に設置した場合のベースとなるアプリケーションのパス
+$base = '/flatphp2micro'; 
 
 // リクエストを内部的にルーティング
-$request = Request::createFromGlobals();
-
-$uri = $request->getPathInfo();
-if ($uri === '/') {
-    $response = list_action($container);
-} elseif ($uri === '/show' && $request->query->has('id')) {
-    $response = show_action($request->query->get('id'), $container);
+$uri = $_SERVER['REQUEST_URI'];
+if ($uri === ($base .'/index.php')) {
+    list_action();
+} elseif ( preg_match("#^{$base}/index.php/show#", $uri) && isset($_GET['id'])) {
+    show_action($_GET['id']);
 } else {
-    $html = '<html><body><h1>Page Not Found</h1></body></html>';
-    $response = new Response($html, 404);
+    header('Status: 404 Not Found');
+    echo '<html><body><h1>ページが見つかりません</h1></body></html>';
 }
 
-// ヘッダーを返し、レスポンスを送る
-$response->send();

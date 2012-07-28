@@ -1,29 +1,44 @@
 <?php
 
 // model.php
-
-$container['db.pdo'] = $container->share(function($c) {
+function get_database_connection()
+{
     $pdo = new PDO(
-      sprintf('mysql:host=%s;dbname=%s', $c['db.host'], $c['db.database']),
-     $c['db.user'],
-     $c['db.password']
+     'mysql:host=localhost;dbname=blog_db',
+     'myuser',
+     'mypassword'
     );
     return $pdo;
-});
+}
 
-$container['model.all_posts'] = function($c) {
-    $stmt = $c['db.pdo']->query('SELECT id, title FROM post');
+function close_database_connection($pdo)
+{
+    $pdo = null;
+}
+
+function get_all_posts()
+{
+    $pdo = get_database_connection();
+
+    $stmt = $pdo->query('SELECT id, title FROM post');
     while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
         $posts[] = $row;
     }
 
-    return $posts;
-};
+    close_database_connection($pdo);
 
-$container['model.post_by_id'] = $container->protect(function($id) use ($container) {
-    $sth = $container['db.pdo']->prepare('SELECT id, date, title, body FROM post where id = :id');
+    return $posts;
+}
+
+function get_post_by_id($id)
+{
+    $pdo = get_database_connection();
+
+    $sth = $pdo->prepare('SELECT id, date, title, body FROM post where id = :id');
     $sth->execute(array(':id' => $id));
     $post = $sth->fetch(PDO::FETCH_ASSOC);
 
+    close_database_connection($pdo);
+
     return $post;
-});
+}
