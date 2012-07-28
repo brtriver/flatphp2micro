@@ -1,5 +1,5 @@
 {
-    "hash": "32039bd96ce6c01f066b04b2d46a9dca",
+    "hash": "9c855f5d78fd7ae4cb185aa0cdf17347",
     "packages": [
         {
             "package": "pimple/pimple",
@@ -14,6 +14,30 @@
             "commit-date": "1343051648"
         },
         {
+            "package": "silex/silex",
+            "version": "dev-master",
+            "alias-pretty-version": "1.0.x-dev",
+            "alias-version": "1.0.9999999.9999999-dev"
+        },
+        {
+            "package": "silex/silex",
+            "version": "dev-master",
+            "source-reference": "ee00393c33b3de861082602747a84d49897b9315",
+            "commit-date": "1344077943"
+        },
+        {
+            "package": "symfony/event-dispatcher",
+            "version": "dev-master",
+            "alias-pretty-version": "2.1.x-dev",
+            "alias-version": "2.1.9999999.9999999-dev"
+        },
+        {
+            "package": "symfony/event-dispatcher",
+            "version": "dev-master",
+            "source-reference": "v2.1.0-RC1",
+            "commit-date": "1342739894"
+        },
+        {
             "package": "symfony/http-foundation",
             "version": "dev-master",
             "alias-pretty-version": "2.1.x-dev",
@@ -22,17 +46,64 @@
         {
             "package": "symfony/http-foundation",
             "version": "dev-master",
-            "source-reference": "4ac6d1ef88798fbbdc7600b1859e62403e1f8c97",
-            "commit-date": "1343400011"
+            "source-reference": "v2.1.0-RC1",
+            "commit-date": "1344071918"
+        },
+        {
+            "package": "symfony/http-kernel",
+            "version": "dev-master",
+            "alias-pretty-version": "2.1.x-dev",
+            "alias-version": "2.1.9999999.9999999-dev"
+        },
+        {
+            "package": "symfony/http-kernel",
+            "version": "dev-master",
+            "source-reference": "0d0ee371ab0425f3399dba9e25d7ad98ca5c0d62",
+            "commit-date": "1344074675"
+        },
+        {
+            "package": "symfony/routing",
+            "version": "dev-master",
+            "alias-pretty-version": "2.1.x-dev",
+            "alias-version": "2.1.9999999.9999999-dev"
+        },
+        {
+            "package": "symfony/routing",
+            "version": "dev-master",
+            "source-reference": "v2.1.0-RC1",
+            "commit-date": "1343744077"
+        },
+        {
+            "package": "symfony/twig-bridge",
+            "version": "dev-master",
+            "alias-pretty-version": "2.1.x-dev",
+            "alias-version": "2.1.9999999.9999999-dev"
+        },
+        {
+            "package": "symfony/twig-bridge",
+            "version": "dev-master",
+            "source-reference": "v2.1.0-RC1",
+            "commit-date": "1343236543"
+        },
+        {
+            "package": "twig/twig",
+            "version": "dev-master",
+            "alias-pretty-version": "1.9.x-dev",
+            "alias-version": "1.9.9999999.9999999-dev"
+        },
+        {
+            "package": "twig/twig",
+            "version": "dev-master",
+            "source-reference": "51c866f415bbee670cd9ba13591307bce8dabdca",
+            "commit-date": "1343464333"
         }
     ],
     "packages-dev": null,
     "aliases": [
 
     ],
-    "minimum-stability": "stable",
-    "stability-flags": {
-        "symfony/http-foundation": 20,
-        "pimple/pimple": 20
-    }
+    "minimum-stability": "dev",
+    "stability-flags": [
+
+    ]
 }

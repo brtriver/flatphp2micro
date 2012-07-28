@@ -1,0 +1,12 @@
+{% extends "layout.html.twig" %}
+{% block title %}投稿の詳細 {{post.title}}{% endblock %}
+
+{% block body %}
+    <h1>{{post.title}}</h1>
+
+    <div class="date">{{post.date}}</div>
+    <div class="body">
+        {{post.body}}
+    </div>
+{% endblock %}
+

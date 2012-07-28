@@ -1,6 +1,8 @@
 {
     "require": {
-        "symfony/http-foundation": "2.1.x-dev",
-        "pimple/pimple": "1.0.x-dev"
-    }
+        "silex/silex": "1.0.*",
+        "twig/twig": "1.*",
+        "symfony/twig-bridge": "2.1.*"
+    },
+    "minimum-stability": "dev"
 }

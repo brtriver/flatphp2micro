@@ -1,24 +1,15 @@
 <?php
-// index.php
+//index.php
+require_once __DIR__.'/vendor/autoload.php';
 
-// グローバルライブラリの読み込みと初期化
-require 'bootstrap.php';
+ini_set('display_errors', 1); // <= PHPのエラーを表示
+error_reporting(-1); // <= PHPの全てのエラーレベルをレポートする
 
-use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\HttpFoundation\Response;
+$app = new Silex\Application();
+$app['debug'] = true; // <= エラー時にエラーの詳細を表示する
 
-// リクエストを内部的にルーティング
-$request = Request::createFromGlobals();
+require __DIR__.'/config.php';
+require __DIR__.'/model.php';
+require __DIR__.'/controllers.php';
 
-$uri = $request->getPathInfo();
-if ($uri === '/') {
-    $response = list_action($container);
-} elseif ($uri === '/show' && $request->query->has('id')) {
-    $response = show_action($request->query->get('id'), $container);
-} else {
-    $html = '<html><body><h1>Page Not Found</h1></body></html>';
-    $response = new Response($html, 404);
-}
-
-// ヘッダーを返し、レスポンスを送る
-$response->send();
+$app->run();

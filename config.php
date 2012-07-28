@@ -1,7 +1,16 @@
 <?php
-$container = new Pimple();
 // database
-$container['db.host'] = 'localhost';
-$container['db.database'] = 'blog_db';
-$container['db.user'] = 'myuser';
-$container['db.password'] = 'mypassword';
+$app['db.config'] = array(
+  'host' => 'localhost',
+  'database' => 'blog_db',
+  'user' => 'myuser',
+  'password' => 'mypassword'
+);
+
+// twig
+$app->register(new Silex\Provider\TwigServiceProvider(), array(
+    'twig.path' => __DIR__.'/templates',
+));
+$app->register(new Silex\Provider\UrlGeneratorServiceProvider());
+
+
