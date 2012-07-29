@@ -11,7 +11,7 @@ function get_database_connection()
     return $pdo;
 }
 
-function close_database_connection($pdo)
+function close_database_connection(&$pdo)
 {
     $pdo = null;
 }
